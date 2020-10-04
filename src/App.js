@@ -1,8 +1,13 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
+  const selector = useSelector((state) => state)
+
+  console.log(selector.users)
+
   return (
     <div className="App">
       <header className="App-header">
