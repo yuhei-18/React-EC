@@ -1,7 +1,10 @@
 import React, {useCallback, useState} from "react";
-import { TextInput, PrimaryButton } from "../components"
+import { TextInput, PrimaryButton } from "../components";
+import { signUp } from "../reducks/users/operations";
+import { useDispatch } from "react-redux";
 
 const SignUp = () => {
+  const dispatch = useDispatch();
 
   const [username, setUsername] = useState(""),
     [email, setEmail] = useState(""),
@@ -46,7 +49,7 @@ const SignUp = () => {
       <div>
         <PrimaryButton 
           label={"登録"}
-          onClick={() => console.log("登録しました！")}
+          onClick={() => dispatch(signUp(username, email, password, confirmPasswprd))}
         />
       </div>
     </div>
