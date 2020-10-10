@@ -1,5 +1,5 @@
 import React, {useCallback, useState} from "react";
-import { TextInput } from "../components"
+import { TextInput, PrimaryButton } from "../components"
 
 const SignUp = () => {
 
@@ -43,6 +43,12 @@ const SignUp = () => {
         fullWidth={true} label={"パスワード（確認用）"} multiline={false} required={true}
         rows={1} value={confirmPasswprd} type={"password"} onChange={inputConfirmPasswprd}
       />
+      <div>
+        <PrimaryButton 
+          label={"登録"}
+          onClick={() => console.log("登録しました！")}
+        />
+      </div>
     </div>
   )
 }
