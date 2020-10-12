@@ -7,6 +7,8 @@ const Home = () => {
   const uid = getUserId(selector);
   const username = getUsername(selector);
 
+  console.log(username);
+
   return (
     <div>
       <h2>Home</h2>
