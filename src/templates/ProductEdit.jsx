@@ -1,18 +1,25 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { TextInput, SelectBox, PrimaryButton } from "../components";
 import { saveProduct } from "../reducks/products/operations";
-import ImageArea from "../components/Products/ImageArea";
+import { ImageArea, SetSizeArea } from "../components/Products";
+import { db } from "../firebase/index";
 
 const ProductEdit = () => {
   const dispatch = useDispatch();
+  let id = window.location.pathname.split("/product/edit")[1];
+
+  if (id !== "") {
+    id = id.split("/")[1];
+  }
 
   const [name, setName] = useState(""),
         [description, setDescription] = useState(""),
         [category, setCategory] = useState(""),
         [gender, setGender] = useState(""),
         [images, setImages] = useState([]),
-        [price, setPrice] = useState("");
+        [price, setPrice] = useState(""),
+        [sizes, setSizes] = useState("");
 
   const inputName = useCallback((event) => {
     setName(event.target.value);
@@ -38,6 +45,22 @@ const ProductEdit = () => {
     {id: "female", name: "レディース"},
   ];
 
+  useEffect(() => {
+    if (id !== "") {
+    db.collection("products").doc(id).get()
+      .then(snapshot => {
+        const data = snapshot.data();
+        setImages(data.images);
+        setName(data.name);
+        setDescription(data.description);
+        setCategory(data.category);
+        setGender(data.gender);
+        setPrice(data.price);
+        setSizes(data.sizes);
+      })
+    }
+  }, [id])
+
   return (
     <section>
       <h2>商品の登録・編集</h2>
@@ -62,11 +85,12 @@ const ProductEdit = () => {
           onChange={inputPrice} rows={1} value={price} type={"number"}
         />
       </div>
+      <SetSizeArea sizes={sizes} setSizes={setSizes} />
       <div>
         <PrimaryButton
           label={"商品情報を保存"}
           onClick={() => dispatch(
-            saveProduct(name, description, category, gender, price, images)
+            saveProduct(id, name, description, category, gender, price, images, sizes)
           )}
         />
       </div>
