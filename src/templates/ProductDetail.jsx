@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { db } from '../firebase/index';
 import { makeStyles } from '@material-ui/styles';
 import HTMLReactParser from 'html-react-parser';
-import { ImageSwiper } from '../components/Products';
+import { ImageSwiper, SizeTable } from '../components/Products';
 
 const useStyles = makeStyles((theme) => ({
   sliderBox: {
@@ -68,6 +68,7 @@ const ProductDetail = () => {
           </div>
           <div className={classes.detail}>
             <h2>{product.name}</h2>
+            <SizeTable sizes={product.sizes} />
             <p className={classes.price}>{product.price.toLocaleString()}</p>
             <p>{ReturnCodeToBr(product.description)}</p>
           </div>
