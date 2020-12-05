@@ -1,11 +1,15 @@
 import React from "react";
 import Router from "./Router";
+import { Header } from "./components/Header"
 
 const App = () => {
   return (
-    <main>
-      <Router />
-    </main>
+    <>
+      <Header />
+      <main>
+        <Router />
+      </main>
+    </>
   )
 };
 
