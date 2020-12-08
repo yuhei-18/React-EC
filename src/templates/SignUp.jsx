@@ -10,7 +10,7 @@ const SignUp = () => {
   const [username, setUsername] = useState(""),
     [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
-    [confirmPasswprd, setConfirmPasswprd] = useState("");
+    [confirmPassword, setConfirmPassword] = useState("");
 
   const inputUsername = useCallback((event) => {
     setUsername(event.target.value);
@@ -24,9 +24,9 @@ const SignUp = () => {
     setPassword(event.target.value);
   }, [setPassword]);
 
-  const inputConfirmPasswprd = useCallback((event) => {
-    setConfirmPasswprd(event.target.value);
-  }, [setConfirmPasswprd]);
+  const inputConfirmPassword = useCallback((event) => {
+    setConfirmPassword(event.target.value);
+  }, [setConfirmPassword]);
 
   return (
     <div>
@@ -45,12 +45,12 @@ const SignUp = () => {
       />
       <TextInput 
         fullWidth={true} label={"パスワード（確認用）"} multiline={false} required={true}
-        rows={1} value={confirmPasswprd} type={"password"} onChange={inputConfirmPasswprd}
+        rows={1} value={confirmPassword} type={"password"} onChange={inputConfirmPassword}
       />
       <div>
         <PrimaryButton 
           label={"登録"}
-          onClick={() => dispatch(signUp(username, email, password, confirmPasswprd))}
+          onClick={() => dispatch(signUp(username, email, password, confirmPassword))}
         />
         <p onClick={() => dispatch(push("./signin"))}>アカウントをお持ちの方はこちら</p>
       </div>
