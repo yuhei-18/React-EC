@@ -7,7 +7,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { getIsSignedIn } from "../../reducks/users/selectors";
 import { push } from "connected-react-router";
-import { HeaderMenus, ClosableDrawer } from "./index";
+import { HeaderMenu, ClosableDrawer } from "./index";
 
 const useStyles = makeStyles({
   root: {
@@ -60,7 +60,7 @@ const Header = () => {
          />
          {isSignedIn && (
            <div className={classes.iconButtons}>
-             <HeaderMenus handleDrawerToggle={handleDrawerToggle} />
+             <HeaderMenu handleDrawerToggle={handleDrawerToggle} />
            </div>
          )}
        </Toolbar>

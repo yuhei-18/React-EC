@@ -1,9 +1,10 @@
 import React, {useState, useEffect, useCallback} from 'react';
-import { useSelector } from 'react-redux';
-import { db } from '../firebase/index';
+import {useDispatch, useSelector} from 'react-redux';
+import { db, FirebaseTimestamp } from '../firebase/index';
 import { makeStyles } from '@material-ui/styles';
 import HTMLReactParser from 'html-react-parser';
 import { ImageSwiper, SizeTable } from '../components/Products';
+import { addProductToCart } from '../reducks/users/operations';
 
 const useStyles = makeStyles((theme) => ({
   sliderBox: {
@@ -45,6 +46,7 @@ const ReturnCodeToBr = (text) => {
 
 const ProductDetail = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const selector = useSelector((state) => state);
   const path = selector.router.location.pathname;
   const id = path.split('/product/')[1];
@@ -57,7 +59,22 @@ const ProductDetail = () => {
         const data = doc.data();
         setProduct(data);
       })
-  }, []);  
+  }, []);
+
+  const addProduct = useCallback((selectedSize) => {
+    const timestamp = FirebaseTimestamp.now();
+    dispatch(addProductToCart({
+      added_at: timestamp,
+      description: product.description,
+      gender:  product.gender,
+      images: product.images,
+      name: product.name,
+      price: product.price,
+      productId: product.id,
+      quantity: 1,
+      size: selectedSize
+    }))
+  }, [product]);
 
   return (
     <section>
@@ -68,7 +85,7 @@ const ProductDetail = () => {
           </div>
           <div className={classes.detail}>
             <h2>{product.name}</h2>
-            <SizeTable sizes={product.sizes} />
+            <SizeTable addProduct={addProduct} sizes={product.sizes} />
             <p className={classes.price}>{product.price.toLocaleString()}</p>
             <p>{ReturnCodeToBr(product.description)}</p>
           </div>
