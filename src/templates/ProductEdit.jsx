@@ -16,6 +16,7 @@ const ProductEdit = () => {
   const [name, setName] = useState(""),
         [description, setDescription] = useState(""),
         [category, setCategory] = useState(""),
+        [categories, setCategories] = useState([]),
         [gender, setGender] = useState(""),
         [images, setImages] = useState([]),
         [price, setPrice] = useState(""),
@@ -32,12 +33,6 @@ const ProductEdit = () => {
   const inputPrice = useCallback((event) => {
     setPrice(event.target.value);
   }, [setPrice]);
-
-  const categorys = [
-    {id: "tops", name: "トップス"},
-    {id: "shirts", name: "シャツ"},
-    {id: "pants", name: "パンツ"},
-  ];
 
   const genders = [
     {id: "all", name: "すべて"},
@@ -59,7 +54,24 @@ const ProductEdit = () => {
         setSizes(data.sizes);
       })
     }
-  }, [id])
+  }, [id]);
+
+  useEffect(() => {
+    db.collection("categories")
+      .orderBy("order", "asc")
+      .get()
+      .then(snapshots => {
+        const list = [];
+        snapshots.forEach(snapshot => {
+          const data = snapshot.data();
+          list.push({
+            id: data.id,
+            name: data.name
+          });
+        });
+        setCategories(list);
+      });
+  }, []);
 
   return (
     <section>
@@ -71,7 +83,7 @@ const ProductEdit = () => {
           onChange={inputName} rows={1} value={name} type={"text"}
         />
         <SelectBox 
-          label={"カテゴリー"} required={true} options={categorys} select={setCategory} value={category}
+          label={"カテゴリー"} required={true} options={categories} select={setCategory} value={category}
         />
         <SelectBox 
           label={"性別"} required={true} options={genders} select={setGender} value={gender}

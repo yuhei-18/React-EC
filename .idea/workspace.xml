@@ -3,14 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="35a3b787-ff43-4c52-87bf-70872d28da12" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Router.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Router.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Products/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Products/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducks/store/initialState.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducks/store/initialState.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducks/users/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducks/users/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducks/users/operations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducks/users/operations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducks/users/reducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducks/users/reducers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducks/users/selectors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducks/users/selectors.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firestore.rules" beforeDir="false" afterPath="$PROJECT_DIR$/firestore.rules" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/ProductEdit.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/ProductEdit.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +59,7 @@
       <updated>1607091863569</updated>
       <workItem from="1607091870501" duration="40765000" />
       <workItem from="1607524909394" duration="2500000" />
-      <workItem from="1607529567660" duration="39324000" />
+      <workItem from="1607529567660" duration="41938000" />
     </task>
     <task id="LOCAL-00001" summary="商品詳細ページの画像 Swiper を作成">
       <created>1607097493507</created>
@@ -137,7 +131,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607781834231</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="購入履歴画面の作成">
+      <created>1607795344411</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1607795344411</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,6 +167,7 @@
     <MESSAGE value="カートの見た目修正" />
     <MESSAGE value="購入確認画面の作成" />
     <MESSAGE value="注文トランザクション処理の作成" />
-    <option name="LAST_COMMIT_MESSAGE" value="注文トランザクション処理の作成" />
+    <MESSAGE value="購入履歴画面の作成" />
+    <option name="LAST_COMMIT_MESSAGE" value="購入履歴画面の作成" />
   </component>
 </project>
